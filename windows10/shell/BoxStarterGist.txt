@@ -1,0 +1,33 @@
+Enable-RemoteDesktop
+Set-CornerNavigationOptions -EnableUsePowerShellOnWinX
+Set-ExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions 	-EnableShowFullPathInTitlebar
+Set-TaskbarOptions -Size Small -Lock
+
+# Disable prompting
+chocolatey feature enable -n=allowGlobalConfirmation
+
+# Install packages using chocolatey
+choco install git
+choco install nodejs
+choco install visualstudiocode
+choco install GoogleChrome
+choco install dotnetcore-3.1-runtime
+
+# Enable prompting
+chocolatey feature disable -n=allowGlobalConfirmation
+
+# Pin programs to desktop
+Install-ChocolateyPinnedTaskBarItem "${env:UserProfile}\Desktop\code.lnk"
+Install-ChocolateyPinnedTaskBarItem "${env:ProgramFiles(x86)}\Google\Chrome\Application\chrome.exe"
+
+
+# Clone Git projects into `c:\projects`
+$projectDir = "${env:systemdrive}\projects"
+
+If (!(Test-Path $projectDir)) {
+	New-Item -Path $projectDir -ItemType Directory
+}
+
+cd $projectDir
+
+git clone https://github.com/digitaldrummerj/VagrantTalk
