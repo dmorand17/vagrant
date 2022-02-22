@@ -10,15 +10,15 @@ Set-CornerNavigationOptions -EnableUsePowerShellOnWinX
 
 # Fix windows explorer
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar
-# Set-BoxstarterTaskbarOptions -Size Small
+Set-BoxstarterTaskbarOptions -Size Small
 
 # Disable prompting
 chocolatey feature enable -n=allowGlobalConfirmation
 
 # Install packages using chocolatey
-# choco install git -y
-choco install sysinternals -y
+# choco install sysinternals -y
 # choco install nodejs -y
+choco install git -y
 choco install visualstudiocode -y
 choco install GoogleChrome -y
 choco install postman -y
@@ -31,9 +31,9 @@ choco install dotnetcore-3.1-runtime -y
 chocolatey feature disable -n=allowGlobalConfirmation
 
 # Pin programs to desktop
-Install-ChocolateyPinnedTaskBarItem "${env:ProgramFiles\Google\Chrome\Application\chrome.exe"
-Install-ChocolateyPinnedTaskBarItem "${env:ProgramFiles\Microsoft VS Code\Code.exe"
-Install-ChocolateyPinnedTaskBarItem "C:\Users\vagrant\AppData\Local\Postman\Postman.exe"
+Install-ChocolateyPinnedTaskBarItem -TargetFilePath "${env:ProgramFiles}\Google\Chrome\Application\chrome.exe"
+Install-ChocolateyPinnedTaskBarItem -TargetFilePath "${env:ProgramFiles}\Microsoft VS Code\Code.exe"
+Install-ChocolateyPinnedTaskBarItem -TargetFilePath "C:\Users\vagrant\AppData\Local\Postman\Postman.exe"
 
 # Clone Git projects into `c:\projects`
 $projectDir = "${env:systemdrive}\projects"
