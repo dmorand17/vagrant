@@ -14,7 +14,10 @@ brew install --cask vagrant
 ```
 
 # Provisioning Windows VM
-# Starting the VM
+Steps are taken from https://digitaldrummerj.me/vagrant-overview/
+
+1. Once VM provisioned run the `RunBoxStarterGist.bat` file located on the desktop
+# Launching VM
 
 We must first [tell VirtualBox it's fine to use the ports we assigned](https://www.virtualbox.org/manual/ch06.html#network_hostonly):
 
@@ -28,10 +31,15 @@ The default windows user and password are both `vagrant`.
 
 ## VirtualBox settings
 * Change Display to 200% to fix resolution issues
-
 ## Random Commands
 
 Convert CCDA documents
 ```
 .\Microsoft.Health.Fhir.Liquid.Converter.Tool.exe convert -d ..\Templates\Ccda -r CCD -i ..\SampleData\Ccda -o ..\output
+```
+
+# Updating Box image
+Run the following to update the box version
+```
+vagrant box update
 ```
