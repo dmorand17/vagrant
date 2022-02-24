@@ -41,11 +41,10 @@ $projectDir = "${env:systemdrive}\projects"
 If (!(Test-Path $projectDir)) {
 	New-Item -Path $projectDir -ItemType Directory
 }
-
 cd $projectDir
 
-# git clone https://github.com/digitaldrummerj/VagrantTalk
-
+# Download github projects
+git clone https://github.com/microsoft/FHIR-Converter.git
 
 Enable-UAC
 Enable-MicrosoftUpdate
